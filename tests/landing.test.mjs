@@ -5,6 +5,7 @@ import {
   buildDestinationUrl,
   generateRandomCode,
   isValidEmail,
+  translations,
 } from '../static/js/landing.js';
 
 test('generateRandomCode creates a 12 character alphanumeric code by default', () => {
@@ -66,4 +67,22 @@ test('landing copy focuses on online security and privacy without product names'
   assert.doesNotMatch(combined, /bluecloudcenter/);
   assert.doesNotMatch(combined, /privacy nest/);
   assert.doesNotMatch(combined, /5 tb|5tb|almacenamiento en la nube|cloud storage|cloud space/);
+});
+
+test('all button labels use the literal Continuar CTA', () => {
+  for (const dictionary of Object.values(translations)) {
+    assert.equal(dictionary.continue, 'Continuar');
+    assert.equal(dictionary.creating, 'Continuar');
+    assert.equal(dictionary.get_started, 'Continuar');
+  }
+});
+
+test('primary CTA uses a stronger green palette', () => {
+  const rawCss = readFileSync(new URL('../static/css/landing-overrides.css', import.meta.url), 'utf8');
+  const css = rawCss.toLowerCase();
+
+  assert.match(css, /--green:\s*#00b050/);
+  assert.match(css, /--green-dark:\s*#008a3d/);
+  assert.match(rawCss, /\.DL-button a/);
+  assert.match(css, /\.formbox-right \.btn-submit/);
 });

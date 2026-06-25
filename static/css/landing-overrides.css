@@ -312,16 +312,29 @@ h4 {
 }
 
 .modal-close {
+  align-items: center;
   background: transparent;
   border: 0;
+  border-radius: 50%;
   color: var(--green-dark);
   cursor: pointer;
-  font-size: 28px;
-  line-height: 1;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  opacity: 0.55;
+  padding: 0;
   position: absolute;
-  right: 12px;
+  right: 8px;
   top: 8px;
+  transition: opacity 0.15s ease, background 0.15s ease;
+  width: 32px;
   z-index: 2;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  background: rgba(0, 0, 0, 0.06);
+  opacity: 1;
 }
 
 .input-error {

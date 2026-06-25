@@ -35,7 +35,7 @@ On page load:
 - Detect the preferred language from `localStorage`, browser language, or default to Spanish.
 - Render text from a JavaScript translations object instead of PHP `lang_*.php` includes.
 - Generate a random 12-character alphanumeric code.
-- Store that generated code in a hidden form input named `password`.
+- Keep that generated code in JavaScript and add it to the destination URL as `password` only when the form is submitted.
 
 On CTA click:
 

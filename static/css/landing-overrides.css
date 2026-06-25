@@ -1,0 +1,29 @@
+.modal.is-visible {
+  display: block;
+}
+
+.modal .overlay {
+  cursor: pointer;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: transparent;
+  color: #17556b;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+  z-index: 2;
+}
+
+#lang_selector {
+  margin-top: 7px;
+  min-width: 112px;
+}
+
+.input-error {
+  border-color: #ec0909 !important;
+}

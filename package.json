@@ -1,6 +1,11 @@
 {
   "type": "module",
   "scripts": {
+    "build": "node scripts/build-static.mjs",
+    "deploy": "wrangler deploy",
     "test": "node --test tests/landing.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.105.0"
   }
 }

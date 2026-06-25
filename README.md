@@ -1,11 +1,12 @@
-# Static Cloudflare Landing
+# Static Cloudflare Workers Landing
 
-Static landing page converted from the provided PHP ZIP for Cloudflare Pages.
+Static landing page converted from the provided PHP ZIP for Cloudflare Workers.
 
 ## Local Checks
 
 ```powershell
 npm test
+npm run build
 python -m http.server 8787
 ```
 
@@ -26,11 +27,13 @@ It forwards all incoming query parameters, removes `email` and `account`, and ad
 - `sub4` with the submitted email.
 - `password` with a generated 12-character alphanumeric code.
 
-## Cloudflare Pages
+## Cloudflare Workers Builds
 
 Use these settings:
 
-- Framework preset: `None`
-- Build command: leave empty
-- Build output directory: `/`
+- Root directory: `/`
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Non-production branch deploy command: `npx wrangler versions upload`
 
+Wrangler reads `wrangler.jsonc` and deploys only `./dist/` as static assets.

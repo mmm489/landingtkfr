@@ -86,3 +86,16 @@ test('primary CTA uses a stronger green palette', () => {
   assert.match(rawCss, /\.DL-button a/);
   assert.match(css, /\.formbox-right \.btn-submit/);
 });
+
+test('Cloudflare Worker deploys only the built static assets folder', () => {
+  const wrangler = JSON.parse(readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8'));
+  const packageJson = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+
+  assert.equal(wrangler.name, 'landingtkfr');
+  assert.equal(wrangler.compatibility_date, '2026-06-25');
+  assert.deepEqual(wrangler.assets, {
+    directory: './dist/',
+  });
+  assert.equal(packageJson.scripts.build, 'node scripts/build-static.mjs');
+  assert.equal(packageJson.scripts.deploy, 'wrangler deploy');
+});

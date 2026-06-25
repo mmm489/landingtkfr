@@ -55,3 +55,15 @@ test('form disables native validation so custom email errors render', () => {
 
   assert.match(html, /<form[^>]+id="cc_form"[^>]+novalidate/);
 });
+
+test('landing copy focuses on online security and privacy without product names', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const js = readFileSync(new URL('../static/js/landing.js', import.meta.url), 'utf8');
+  const combined = `${html}\n${js}`.toLowerCase();
+
+  assert.match(combined, /seguridad/);
+  assert.match(combined, /privacidad/);
+  assert.doesNotMatch(combined, /bluecloudcenter/);
+  assert.doesNotMatch(combined, /privacy nest/);
+  assert.doesNotMatch(combined, /5 tb|5tb|almacenamiento en la nube|cloud storage|cloud space/);
+});

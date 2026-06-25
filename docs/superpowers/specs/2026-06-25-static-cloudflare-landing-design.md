@@ -4,7 +4,9 @@
 
 Convert the provided PHP landing page into a static landing page that can be deployed on Cloudflare Pages.
 
-The visual experience should stay close to the original ZIP landing: header, cloud-storage messaging, CTA buttons, language selector, modal, email field, generated code field behavior, validation, and campaign parameter forwarding.
+The visual experience should keep the same conversion flow as the original ZIP landing: header, CTA buttons, language selector, modal, email field, generated code behavior, validation, and campaign parameter forwarding.
+
+The visible positioning must describe a generic online security and privacy offer. It must not use a product name, and it must not mention cloud storage capacity.
 
 ## Constraints
 
@@ -15,6 +17,8 @@ The visual experience should stay close to the original ZIP landing: header, clo
 - Preserve every incoming query parameter from Google Ads or any other source.
 - Add `sub4=<email>` on submit. Do not send the email under an `email` parameter.
 - Do not send an `account` parameter.
+- Do not show a product name in the landing copy.
+- Do not mention cloud storage, 5 TB capacity, or similar storage claims.
 - Target Cloudflare Pages static hosting.
 
 ## Architecture
